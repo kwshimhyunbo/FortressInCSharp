@@ -73,9 +73,9 @@ namespace WindowsFormsApplication1.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap tank {
+        internal static System.Drawing.Bitmap tank_left {
             get {
-                object obj = ResourceManager.GetObject("tank", resourceCulture);
+                object obj = ResourceManager.GetObject("tank_left", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,29 @@ namespace WindowsFormsApplication1.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap tank2 {
+        internal static System.Drawing.Bitmap tank_right {
             get {
-                object obj = ResourceManager.GetObject("tank2", resourceCulture);
+                object obj = ResourceManager.GetObject("tank_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap tank2_left {
+            get {
+                object obj = ResourceManager.GetObject("tank2_left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap tank2_right {
+            get {
+                object obj = ResourceManager.GetObject("tank2_right", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.angle = new System.Windows.Forms.Label();
             this.wind = new System.Windows.Forms.Label();
+            this.player1 = new System.Windows.Forms.PictureBox();
             this.player2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.player1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.player1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player1)).BeginInit();
             this.SuspendLayout();
             // 
             // angle
@@ -60,13 +61,23 @@
             this.wind.TabIndex = 2;
             this.wind.Text = "바람";
             // 
+            // player1
+            // 
+            this.player1.BackColor = System.Drawing.Color.Transparent;
+            this.player1.Image = ((System.Drawing.Image)(resources.GetObject("player1.Image")));
+            this.player1.Location = new System.Drawing.Point(234, 325);
+            this.player1.Name = "player1";
+            this.player1.Size = new System.Drawing.Size(44, 34);
+            this.player1.TabIndex = 5;
+            this.player1.TabStop = false;
+            // 
             // player2
             // 
             this.player2.BackColor = System.Drawing.Color.Transparent;
-            this.player2.Image = global::WindowsFormsApplication1.Properties.Resources.tank;
+            this.player2.Image = global::WindowsFormsApplication1.Properties.Resources.tank_left;
             this.player2.Location = new System.Drawing.Point(659, 325);
             this.player2.Name = "player2";
-            this.player2.Size = new System.Drawing.Size(37, 34);
+            this.player2.Size = new System.Drawing.Size(38, 34);
             this.player2.TabIndex = 4;
             this.player2.TabStop = false;
             // 
@@ -82,16 +93,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
-            // player1
-            // 
-            this.player1.BackColor = System.Drawing.Color.Transparent;
-            this.player1.Image = global::WindowsFormsApplication1.Properties.Resources.tank2;
-            this.player1.Location = new System.Drawing.Point(234, 325);
-            this.player1.Name = "player1";
-            this.player1.Size = new System.Drawing.Size(44, 34);
-            this.player1.TabIndex = 5;
-            this.player1.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -106,9 +107,9 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.player1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

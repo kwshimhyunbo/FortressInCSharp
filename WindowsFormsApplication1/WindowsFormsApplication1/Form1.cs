@@ -10,35 +10,49 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-   
-
-
 
     public partial class Form1 : Form
     {
-
+        Unit leftUser, rightUser;
         public Form1()
         {
-           
             InitializeComponent();
         }
 
-       
-
-   
-
         private void Form1_Load(object sender, EventArgs e)
+        {
+            gameStart();   
+        }
+
+        public void changeTurnSetting()
+        {
+            if(leftUser.getNowTurn())
+            {
+                leftUser.setNowTurn(false);
+                rightUser.setNowTurn(true);
+            }
+            else
+            {
+                rightUser.setNowTurn(false);
+                leftUser.setNowTurn(true);
+            }
+        }
+
+        public void gameStart()
         {
             angle.Parent = pictureBox1;
             wind.Parent = pictureBox1;
             player2.Parent = pictureBox1;
             player1.Parent = pictureBox1;
-        }
+
+            leftUser = new Unit();
+            rightUser = new Unit();
+            leftUser.img = player1;
+            rightUser.img = player2;
 
 
-        public void gameStart()
-        {
-          
+            rightUser.setNowTurn(true);
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -54,25 +68,42 @@ namespace WindowsFormsApplication1
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-             int position;
+            int position;
+            Unit user;
+            if(leftUser.getNowTurn())
+            {
+                user= leftUser;
+            }
+
+              else
+                user = rightUser;
             switch (e.KeyCode)
             {
                 //게임 시작
                 case Keys.Space:
-                    this.Close();
+                    changeTurnSetting();
                      break;
 
                 //오른쪽으로 이동
                 case Keys.Right:
-                     position = this.player1.Location.X + 1;
-                     this.player1.Location = new System.Drawing.Point(position, 325);  
+                    if(leftUser.getNowTurn())
+                        user.img.Image = user.img.Image = Properties.Resources.tank2_right;
+                    else
+                        user.img.Image = user.img.Image = Properties.Resources.tank_right;
+
+                    position = user.img.Location.X + 1;
+                     user.img.Location = new System.Drawing.Point(position, 325);  
                     break;
                 case Keys.None:
                   break;
                 //왼쪽으로 이동
                 case Keys.Left:
-                  position = this.player1.Location.X - 1;
-                  this.player1.Location = new System.Drawing.Point(position, 325);
+                  if (leftUser.getNowTurn())
+                      user.img.Image = user.img.Image = Properties.Resources.tank2_left;
+                  else
+                      user.img.Image = user.img.Image = Properties.Resources.tank_left;
+                  position = user.img.Location.X - 1;
+                  user.img.Location = new System.Drawing.Point(position, 325);
                    break;
             }
         }
@@ -113,15 +144,34 @@ namespace WindowsFormsApplication1
 
     public class Unit
     {
-        private int x;
-        private int y;
+        public PictureBox img;
         private int HP;
+        private bool turn;
+        
+       public int  getHP()
+        {
+            return HP;
+        }
+       public void setHP(int hp)
+        {
+            this.HP = hp;
+        }
+
+       public bool getNowTurn()
+        {
+            return turn;
+        }
+
+       public void setNowTurn(bool myTurn)
+        {
+            this.turn = myTurn;
+        }
 
         public void init()
         {
-            x = 0;
-            y = 0;
             HP = 1500;
+            turn = false ;
+            img = null;
         }
 
 
