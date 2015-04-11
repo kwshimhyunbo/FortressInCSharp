@@ -29,43 +29,43 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.angle = new System.Windows.Forms.Label();
-            this.wind = new System.Windows.Forms.Label();
+            this.labelAngle = new System.Windows.Forms.Label();
+            this.labelWind = new System.Windows.Forms.Label();
             this.player1 = new System.Windows.Forms.PictureBox();
             this.player2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.angleValue = new System.Windows.Forms.Label();
+            this.windValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.player1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // angle
+            // labelAngle
             // 
-            this.angle.AutoSize = true;
-            this.angle.BackColor = System.Drawing.Color.Transparent;
-            this.angle.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.angle.Location = new System.Drawing.Point(426, 423);
-            this.angle.Name = "angle";
-            this.angle.Size = new System.Drawing.Size(52, 21);
-            this.angle.TabIndex = 1;
-            this.angle.Text = "각도";
+            this.labelAngle.AutoSize = true;
+            this.labelAngle.BackColor = System.Drawing.Color.Transparent;
+            this.labelAngle.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelAngle.Location = new System.Drawing.Point(419, 417);
+            this.labelAngle.Name = "labelAngle";
+            this.labelAngle.Size = new System.Drawing.Size(52, 21);
+            this.labelAngle.TabIndex = 1;
+            this.labelAngle.Text = "각도";
             // 
-            // wind
+            // labelWind
             // 
-            this.wind.AutoSize = true;
-            this.wind.BackColor = System.Drawing.Color.Transparent;
-            this.wind.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.wind.Location = new System.Drawing.Point(829, 468);
-            this.wind.Name = "wind";
-            this.wind.Size = new System.Drawing.Size(58, 24);
-            this.wind.TabIndex = 2;
-            this.wind.Text = "바람";
+            this.labelWind.AutoSize = true;
+            this.labelWind.BackColor = System.Drawing.Color.Transparent;
+            this.labelWind.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelWind.Location = new System.Drawing.Point(827, 468);
+            this.labelWind.Name = "labelWind";
+            this.labelWind.Size = new System.Drawing.Size(58, 24);
+            this.labelWind.TabIndex = 2;
+            this.labelWind.Text = "바람";
             // 
             // player1
             // 
             this.player1.BackColor = System.Drawing.Color.Transparent;
             this.player1.Image = ((System.Drawing.Image)(resources.GetObject("player1.Image")));
-            this.player1.Location = new System.Drawing.Point(234, 325);
+            this.player1.Location = new System.Drawing.Point(217, 324);
             this.player1.Name = "player1";
             this.player1.Size = new System.Drawing.Size(44, 34);
             this.player1.TabIndex = 5;
@@ -75,41 +75,50 @@
             // 
             this.player2.BackColor = System.Drawing.Color.Transparent;
             this.player2.Image = global::WindowsFormsApplication1.Properties.Resources.tank_left;
-            this.player2.Location = new System.Drawing.Point(659, 325);
+            this.player2.Location = new System.Drawing.Point(606, 324);
             this.player2.Name = "player2";
             this.player2.Size = new System.Drawing.Size(38, 34);
             this.player2.TabIndex = 4;
             this.player2.TabStop = false;
             // 
-            // pictureBox1
+            // angleValue
             // 
-            this.pictureBox1.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.background;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(894, 540);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            this.angleValue.AutoSize = true;
+            this.angleValue.BackColor = System.Drawing.Color.Transparent;
+            this.angleValue.Location = new System.Drawing.Point(443, 451);
+            this.angleValue.Name = "angleValue";
+            this.angleValue.Size = new System.Drawing.Size(0, 12);
+            this.angleValue.TabIndex = 6;
+            // 
+            // windValue
+            // 
+            this.windValue.AutoSize = true;
+            this.windValue.BackColor = System.Drawing.Color.Transparent;
+            this.windValue.Location = new System.Drawing.Point(856, 503);
+            this.windValue.Name = "windValue";
+            this.windValue.Size = new System.Drawing.Size(0, 12);
+            this.windValue.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(894, 540);
+            this.Controls.Add(this.windValue);
+            this.Controls.Add(this.angleValue);
             this.Controls.Add(this.player1);
             this.Controls.Add(this.player2);
-            this.Controls.Add(this.wind);
-            this.Controls.Add(this.angle);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.labelWind);
+            this.Controls.Add(this.labelAngle);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "r";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.player1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,11 +126,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label angle;
-        private System.Windows.Forms.Label wind;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label labelAngle;
+        private System.Windows.Forms.Label labelWind;
         private System.Windows.Forms.PictureBox player2;
         private System.Windows.Forms.PictureBox player1;
+        private System.Windows.Forms.Label angleValue;
+        private System.Windows.Forms.Label windValue;
     }
 }
 

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AAD030DB-D12D-42D3-97FD-96907E455AF5}</ProjectGuid>
+    <ProjectGuid>{2D42B6FE-156A-4EBA-89A7-EA2B8DC2CB53}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WindowsFormsApplication1</RootNamespace>
-    <AssemblyName>WindowsFormsApplication1</AssemblyName>
+    <RootNamespace>WindowsFormsApplication3</RootNamespace>
+    <AssemblyName>WindowsFormsApplication3</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,10 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AGauge.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="AGauge.Designer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,7 +52,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AGauge.resx" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,21 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tank.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tank2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tank2_left.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tank_right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tank2_right.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
