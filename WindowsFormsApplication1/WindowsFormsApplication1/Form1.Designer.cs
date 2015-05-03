@@ -69,7 +69,7 @@
             this.labelWind.Size = new System.Drawing.Size(58, 24);
             this.labelWind.TabIndex = 2;
             this.labelWind.Text = "바람";
-            this.labelWind.Click += new System.EventHandler(this.labelWind_Click);
+        
             // 
             // player1
             // 
@@ -114,18 +114,18 @@
             this.hp2label.AutoSize = true;
             this.hp2label.Location = new System.Drawing.Point(606, 361);
             this.hp2label.Name = "hp2label";
-            this.hp2label.Size = new System.Drawing.Size(25, 12);
+            this.hp2label.Size = new System.Drawing.Size(49, 12);
             this.hp2label.TabIndex = 8;
-            this.hp2label.Text = "HP:";
+            this.hp2label.Text = "HP:1500";
             // 
             // hp1label
             // 
             this.hp1label.AutoSize = true;
             this.hp1label.Location = new System.Drawing.Point(215, 361);
             this.hp1label.Name = "hp1label";
-            this.hp1label.Size = new System.Drawing.Size(25, 12);
+            this.hp1label.Size = new System.Drawing.Size(49, 12);
             this.hp1label.TabIndex = 9;
-            this.hp1label.Text = "HP:";
+            this.hp1label.Text = "HP:1500";
             // 
             // windlabel
             // 
@@ -162,7 +162,7 @@
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+       
             // 
             // powerlabel
             // 
@@ -211,7 +211,6 @@
         private System.Windows.Forms.Label labelAngle;
         private System.Windows.Forms.Label labelWind;
         private System.Windows.Forms.PictureBox player2;
-        private System.Windows.Forms.PictureBox player1;
         private System.Windows.Forms.Label angleValue;
         private System.Windows.Forms.Label windValue;
         private System.Windows.Forms.Label hp2label;
@@ -221,6 +220,7 @@
         private System.Windows.Forms.PictureBox rightbom;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label powerlabel;
+        private System.Windows.Forms.PictureBox player1;
     }
 }
 
