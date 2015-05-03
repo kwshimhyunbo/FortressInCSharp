@@ -10,27 +10,38 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-
-    public partial class Form1 : Form
+    
+    public partial class leftbomb : Form
     {
-        Unit leftUser, rightUser;
+        Random generateRandom;
+     
+        
+        Unit user , leftUser, rightUser;
         int value;
         int power_value;
-        public Form1()
+        int wind;
+        public leftbomb()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             gameStart();
-           
+            this.Refresh();
         }
 
         public void changeTurnSetting()
         {
+
+            DateTime dtmcurrent = DateTime.Now;
+            generateRandom = new Random(dtmcurrent.Millisecond);
+
+            windlabel.Text = generateRandom.Next(-10, 10).ToString();
             value = 0;
             power_value = 0;
+            
             if(leftUser.getNowTurn())
             {
                 leftUser.setNowTurn(false);
@@ -46,16 +57,20 @@ namespace WindowsFormsApplication1
 
         public void gameStart()
         {
-           
-            
+            DateTime dtmcurrent = DateTime.Now;
+            generateRandom = new Random(dtmcurrent.Millisecond);
+
+            windlabel.Text = generateRandom.Next(-10, 10).ToString();
             leftUser = new Unit();
             rightUser = new Unit();
+            leftUser.init();
+            rightUser.init();
             leftUser.img = player1;
             rightUser.img = player2;
 
             
-            rightUser.setNowTurn(true);
-            
+            leftUser.setNowTurn(true);
+            rightUser.setNowTurn(false);            
            
         }
        
@@ -99,7 +114,7 @@ namespace WindowsFormsApplication1
             Graphics _graphics = this.CreateGraphics();
             SolidBrush _brush = new SolidBrush(Color.Red);
             _graphics.FillRectangle(_brush, 220, 504, power_value, 30);
-
+            powerlabel.Text = power_value.ToString();
 
         }
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -107,16 +122,29 @@ namespace WindowsFormsApplication1
             switch (e.KeyCode)
             {
                 case Keys.Space:
+                    timer1.Interval = 20;
+                    timer1.Start();
                     changeTurnSetting();
+                    
                     break;
             }
+            
         }
-       
+       public void makemissile()
+        {
+          
+        }
+
+
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
           
             int position;
-            Unit user;
+            int labelposition;
+            int bombposition;
+            PictureBox bomb;
+            Label label;
             if(leftUser.getNowTurn())
                 user= leftUser;
 
@@ -155,14 +183,27 @@ namespace WindowsFormsApplication1
 
                 //오른쪽으로 이동
                 case Keys.Right:
-                     if (leftUser.getNowTurn())
-                         user.img.Image = user.img.Image = Properties.Resources.tank2_right;
-                     else
-                         user.img.Image = user.img.Image = Properties.Resources.tank_right;
+                    if (leftUser.getNowTurn())
+                    {
+                        bomb = leftbom;
+                        label = hp1label;
+                        user.img.Image = Properties.Resources.tank2_right;
+                    }
+                    else
+                    {
+                        bomb = rightbom;
+                        label = hp2label;
+                        user.img.Image = Properties.Resources.tank_right;
+                    }
                     if(value<180)
                     {
                      move(5);
+                         label.Text = "HP:" + user.getHP().ToString();
+                     labelposition = label.Location.X + 1;
                     position = user.img.Location.X + 1;
+                  bombposition = bomb.Location.X +1;
+                  bomb.Location = new Point(bombposition, 296);
+                    label.Location = new Point(labelposition,365);
                      user.img.Location = new System.Drawing.Point(position, 325);
                     }
                     break;
@@ -171,14 +212,27 @@ namespace WindowsFormsApplication1
                 //왼쪽으로 이동
                 case Keys.Left:
                   if (leftUser.getNowTurn())
-                      user.img.Image = user.img.Image = Properties.Resources.tank2_left;
+                  {
+                      bomb = leftbom;
+                      label = hp1label;
+                      user.img.Image = Properties.Resources.tank2_left;
+                  }
+
                   else
-                      user.img.Image = user.img.Image = Properties.Resources.tank_left;
+                  {
+                      bomb = rightbom;
+                      label = hp2label;
+                      user.img.Image = Properties.Resources.tank_left;
+                  }
                   if (value < 180)
                   {
                       move(5);
-                     
+                      label.Text = "HP:" + user.getHP().ToString();
+                      labelposition = label.Location.X - 1;
                       position = user.img.Location.X - 1;
+                      bombposition = bomb.Location.X - 1;
+                      bomb.Location = new Point(bombposition, 296);
+                      label.Location = new Point(labelposition, 365);
                       user.img.Location = new System.Drawing.Point(position, 325);
 
                   }
@@ -191,6 +245,80 @@ namespace WindowsFormsApplication1
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void labelWind_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        int g = 2; //중력가속도 값
+
+        int vx = 10; // x축의 초기 속도
+
+        int vy = +10;
+        int x, y = 1000;
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           
+            if (rightUser.getNowTurn()==true)
+            {
+                leftbom.Visible = true;
+                
+                    x = leftbom.Location.X;
+
+                    x = x + Convert.ToInt32(Math.Cos(Math.PI * leftUser.getAngle() / 180.0)) * Int32.Parse(powerlabel.Text) / 10;
+                    vy = vy * Convert.ToInt32(Math.Sin(Math.PI * leftUser.getAngle() / 180.0)) -g;
+                    y = leftbom.Location.Y;
+                    y = y - vy;
+                    leftbom.Location = new Point(x, y);
+                    if (y > 400)
+                    {
+                        leftbom.Visible = false;
+                        
+                        vx = 10;
+                        vy = +20;
+                        y = 1000;
+                        timer1.Stop();
+                        leftbom.Location = new Point(leftUser.img.Location.X + 10, leftUser.img.Location.Y - 10);
+                    }
+            }
+
+            else
+            {
+                rightbom.Visible = true;
+                
+                    x = rightbom.Location.X;
+                    x = x - Int32.Parse(powerlabel.Text)/10;
+                    vy = vy  - g;
+                    y = rightbom.Location.Y;
+                    y = y -vy;
+                    rightbom.Location = new Point(x, y);
+                    if (y > 400)
+                    {
+                        rightbom.Visible = false;
+                        
+                        vx = 10;
+                        vy = +20;
+                        y = 1000;
+                        
+                        timer1.Stop();
+                        rightbom.Location = new Point(rightUser.img.Location.X + 10, rightUser.img.Location.Y - 10);
+                        
+                    }
+            }
+
+        
+           
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+       
         }
 
         
@@ -237,9 +365,9 @@ namespace WindowsFormsApplication1
         public PictureBox img;
         private int HP;
         private bool turn;
-        private int angle;
+        private double angle;
 
-        public int getAngle()
+        public double getAngle()
         {
             return angle;
         }
@@ -273,7 +401,7 @@ namespace WindowsFormsApplication1
             HP = 1500;
             turn = false ;
             img = null;
-            angle = 0;
+            angle = 45;
         }
 
 
