@@ -38,14 +38,15 @@
             this.hp2label = new System.Windows.Forms.Label();
             this.hp1label = new System.Windows.Forms.Label();
             this.windlabel = new System.Windows.Forms.Label();
-            this.leftbom = new System.Windows.Forms.PictureBox();
-            this.rightbom = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.powerlabel = new System.Windows.Forms.Label();
+            this.BOMB = new System.Windows.Forms.PictureBox();
+            this.fire = new System.Windows.Forms.PictureBox();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.player1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.leftbom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rightbom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BOMB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fire)).BeginInit();
             this.SuspendLayout();
             // 
             // labelAngle
@@ -69,7 +70,6 @@
             this.labelWind.Size = new System.Drawing.Size(58, 24);
             this.labelWind.TabIndex = 2;
             this.labelWind.Text = "바람";
-        
             // 
             // player1
             // 
@@ -84,10 +84,11 @@
             // player2
             // 
             this.player2.BackColor = System.Drawing.Color.Transparent;
-            this.player2.Image = global::WindowsFormsApplication1.Properties.Resources.tank_left;
-            this.player2.Location = new System.Drawing.Point(606, 324);
+            this.player2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.player2.Image = global::WindowsFormsApplication1.Properties.Resources.wait;
+            this.player2.Location = new System.Drawing.Point(586, 304);
             this.player2.Name = "player2";
-            this.player2.Size = new System.Drawing.Size(34, 34);
+            this.player2.Size = new System.Drawing.Size(69, 54);
             this.player2.TabIndex = 4;
             this.player2.TabStop = false;
             // 
@@ -136,33 +137,9 @@
             this.windlabel.TabIndex = 10;
             this.windlabel.Text = "0";
             // 
-            // leftbom
-            // 
-            this.leftbom.BackColor = System.Drawing.Color.Transparent;
-            this.leftbom.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.RED;
-            this.leftbom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.leftbom.Location = new System.Drawing.Point(243, 296);
-            this.leftbom.Name = "leftbom";
-            this.leftbom.Size = new System.Drawing.Size(41, 42);
-            this.leftbom.TabIndex = 11;
-            this.leftbom.TabStop = false;
-            this.leftbom.Visible = false;
-            // 
-            // rightbom
-            // 
-            this.rightbom.BackColor = System.Drawing.Color.Transparent;
-            this.rightbom.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.bomb;
-            this.rightbom.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.rightbom.Location = new System.Drawing.Point(575, 296);
-            this.rightbom.Name = "rightbom";
-            this.rightbom.Size = new System.Drawing.Size(41, 42);
-            this.rightbom.TabIndex = 12;
-            this.rightbom.TabStop = false;
-            this.rightbom.Visible = false;
-            // 
             // timer1
             // 
-       
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // powerlabel
             // 
@@ -173,6 +150,35 @@
             this.powerlabel.TabIndex = 13;
             this.powerlabel.Text = "0";
             // 
+            // BOMB
+            // 
+            this.BOMB.BackColor = System.Drawing.Color.Transparent;
+            this.BOMB.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.RED;
+            this.BOMB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BOMB.Location = new System.Drawing.Point(243, 296);
+            this.BOMB.Name = "BOMB";
+            this.BOMB.Size = new System.Drawing.Size(41, 42);
+            this.BOMB.TabIndex = 11;
+            this.BOMB.TabStop = false;
+            this.BOMB.Visible = false;
+            // 
+            // fire
+            // 
+            this.fire.AccessibleRole = System.Windows.Forms.AccessibleRole.Equation;
+            this.fire.BackColor = System.Drawing.Color.Transparent;
+            this.fire.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.fire.Image = global::WindowsFormsApplication1.Properties.Resources.fire;
+            this.fire.Location = new System.Drawing.Point(308, 68);
+            this.fire.Name = "fire";
+            this.fire.Size = new System.Drawing.Size(199, 80);
+            this.fire.TabIndex = 14;
+            this.fire.TabStop = false;
+            this.fire.Visible = false;
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // leftbomb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -180,9 +186,9 @@
             this.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(894, 540);
+            this.Controls.Add(this.fire);
             this.Controls.Add(this.powerlabel);
-            this.Controls.Add(this.rightbom);
-            this.Controls.Add(this.leftbom);
+            this.Controls.Add(this.BOMB);
             this.Controls.Add(this.player1);
             this.Controls.Add(this.windlabel);
             this.Controls.Add(this.hp1label);
@@ -199,8 +205,8 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.player1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.leftbom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rightbom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BOMB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fire)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,11 +222,12 @@
         private System.Windows.Forms.Label hp2label;
         private System.Windows.Forms.Label hp1label;
         private System.Windows.Forms.Label windlabel;
-        private System.Windows.Forms.PictureBox leftbom;
-        private System.Windows.Forms.PictureBox rightbom;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label powerlabel;
         private System.Windows.Forms.PictureBox player1;
+        private System.Windows.Forms.PictureBox BOMB;
+        private System.Windows.Forms.PictureBox fire;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
