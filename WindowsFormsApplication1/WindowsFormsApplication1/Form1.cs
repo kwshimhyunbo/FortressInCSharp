@@ -183,7 +183,10 @@ namespace WindowsFormsApplication1
                         position = user.img.Location.X + 1;
             
                         label.Location = new Point(labelposition,365);
-                        user.img.Location = new System.Drawing.Point(position, 320);
+                        if(user == leftUser)
+                            user.img.Location = new System.Drawing.Point(position, 320);
+                        else
+                            user.img.Location = new System.Drawing.Point(position, 300);
                     }
                     break;
                 case Keys.None:
@@ -211,7 +214,10 @@ namespace WindowsFormsApplication1
                       position = user.img.Location.X - 1;
      
                       label.Location = new Point(labelposition, 365);
-                      user.img.Location = new System.Drawing.Point(position, 320);
+                      if (user == leftUser)
+                          user.img.Location = new System.Drawing.Point(position, 320);
+                      else
+                          user.img.Location = new System.Drawing.Point(position, 300);
                   }
 
                    break;
